@@ -51,7 +51,7 @@ function hanoi(n, a, b, c) {
     }
 }
 
-let k = 25 // Numero di dischi
+let k = 7 // Numero di dischi
 let a = new Pile("A", k)
 let b = new Pile("B", 0)
 let c = new Pile("C", 0)
