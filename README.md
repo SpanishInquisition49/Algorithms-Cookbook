@@ -1,12 +1,6 @@
 # algorithms_cookbook
 A collection of algorithms studied for University
 
-##### Table of Contents  
-[Headers](#Hanoi tower)   
-...snip...    
-<a name="Hanoi Tower"/>
-
-
 ## Hanoi Tower
 The Tower of Hanoi is a mathematical game or puzzle consisting of three rods and a number of disks of various diameters, which can slide onto any rod. The puzzle begins with the disks stacked on one rod in order of decreasing size, the smallest at the top, thus approximating a conical shape. The objective of the puzzle is to move the entire stack to the last rod, obeying the following rules:
 
