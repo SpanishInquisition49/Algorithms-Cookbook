@@ -7,7 +7,7 @@ The Tower of Hanoi is a mathematical game or puzzle consisting of three rods and
 Only one disk may be moved at a time.
 Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 No disk may be placed on top of a disk that is smaller than it.
-With 3 disks, the puzzle can be solved in 7 moves. The minimal number of moves required to solve a Tower of Hanoi puzzle is 2n − 1, where n is the number of disks.
+With 3 disks, the puzzle can be solved in 7 moves. The minimal number of moves required to solve a Tower of Hanoi puzzle is 2^n − 1, where n is the number of disks.
 
 ## Insertion Sort
 Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain.
