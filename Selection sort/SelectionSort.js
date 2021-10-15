@@ -27,7 +27,8 @@ Return -> Min = L'indice del valore minimo
 function min(array,index){
   let min=index;
   for(let i=index+1; i<array.length; i++){
-    if(array[i]<array[min]) min = i;
+    if(array[i]<array[min]) 
+      min = i;
   }
   return min;
 }

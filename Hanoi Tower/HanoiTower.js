@@ -1,5 +1,4 @@
-//Torre di Hanoi
-//cambiare k a piacimento per aumentare il numero di dischi
+//La seguente classe associa un nome ad un array
 class Pile {
     name
     array
@@ -26,6 +25,12 @@ class Pile {
     }
 }
 
+/*
+La seguente funzione stampa le pile nell'ordine partenza, ausiliare, destinazione
+Parametro -> a = pila
+Parametro -> b = pila
+Parametro -> c = pila
+*/
 function printInOrder(a,b,c) {
     let arr = [a,b,c]
     arr.sort((a,b) => {
@@ -36,6 +41,13 @@ function printInOrder(a,b,c) {
         el.print()
 }
 
+/*
+La seguente funzione ricorsiva risolve il gioco della torre di hanoi
+Parametro -> n = numero di dischi
+Parametro -> a = pila iniziale
+Parametro -> b = pila ausiliare
+Parametro -> c = pila di destinazione
+*/
 function hanoi(n, a, b, c) {
     if(n == 1){
         c.push(a.pop())
@@ -51,8 +63,10 @@ function hanoi(n, a, b, c) {
     }
 }
 
-let n = 7 // Numero di dischi
-let a = new Pile("A", k)
+//Torre di Hanoi
+//cambiare n a piacimento per aumentare il numero di dischi
+let n = 7
+let a = new Pile("A", n)
 let b = new Pile("B", 0)
 let c = new Pile("C", 0)
 printInOrder(a,b,c)

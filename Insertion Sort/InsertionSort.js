@@ -1,3 +1,7 @@
+/*
+La seguente funzione ordina l'array utilizzando l'insertion sort
+Parametro -> a = L'array sul quale si vuole effettuare il sort
+*/
 function insertionSortNonDecreasing(a){
     for(let j = 1; j<a.length; j++){
         let key = a[j];
