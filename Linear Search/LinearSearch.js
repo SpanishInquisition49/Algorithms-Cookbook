@@ -1,5 +1,5 @@
 /*
-La seguente funzione trova il l'indice del valore v passato come argomento
+La seguente funzione trova la prima occorrenza del valore v passato come argomento
 Parametro -> a = L'array in cui si vuole effettuare la ricerca
 Parametro -> v = valore di cui si vuole sapere l'indice nell'array
 Return ->  l'indice della prima occorrenza di v oppure null se v non è presente nell'array a
