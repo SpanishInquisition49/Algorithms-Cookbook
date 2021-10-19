@@ -34,6 +34,19 @@ Observing that the subarray A' [0..n-1] is the entire array , we conclude that t
 
 ## Linear Search
 A linear search sequentially checks each element of the list until it finds an element that matches the target value. If the algorithm reaches the end of the list, the search terminates unsuccessfully.
+### Correctness of Linear Search
+#### Loop Invariant:
+For each index *k* in the subarray A' [0..i) => A'[k] != *v*
+Informally: the subarray A' [0..i) doesn't contain the element *v*
+#### Intialization:
+*i* = 0 => A'[0..0) => Empty Array => for each *k* index A'[k] != *v* and it's true because the empty array does not contain any element
+#### Maintenance:
+For each index *k* in the subarray A' [0..i) A'[k] != *v* and A[i] != *v* <==> for each *k* in the subarray A'[0..i+1) A'[k] != *v*
+#### Termination:
+The for loop may end for two reasons:
+* Return *i* if A[i] == *v*
+* *i* = A.length (last iteration of the for loop), the loop invariant is:
+for each index *k* in the subarray A' [0..A.length) A[k] != *v*, but the subarray A'[0..A.length) is the entire array A, so the value *v* is not contained in the array and the value nil is returned.   
 
 ## Selection Sort
 Selection sort divides the input list into two parts: a sorted sublist of items which is built up from left to right at the front (left) of the list and a sublist of the remaining unsorted items that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
