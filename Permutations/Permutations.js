@@ -33,7 +33,7 @@ function objectify(s) {
 /*
 La seguente funzione genera un array contente tutte le possibili permutazioni di una stringa
 Parametro -> s = stringa di cui generarare tutte le permutaziooni
-Return -> un oggarray contente ogni permutazione di s (incluso s stesso)
+Return -> un array contente ogni permutazione di s (incluso s stesso)
 */
 function findPermutations(s) {
     if (s.length < 2) {
@@ -57,7 +57,28 @@ function findPermutations(s) {
     return permutationsArray;
 }
 
+function isVampire(n){
+    let nString = String(n)
+    let half = nString.length/2;
+    if(nString.length%2!=0)
+        return false;
+    let permutations = findPermutations(nString);
+    for(permutation of permutations){
+        let a = Number(permutation.substring(0, half))
+        let b = Number(permutation.substring(half))
+        //console.log(`Permutation ${permutation} | a: ${a} b: ${b}`)
+        if(a*b == n && (a%10 != 0 || b%10 != 0))
+            return true
+    }
+    return false;
+}
+
 let a = "sbrinz";
 let b = "bsinrz";
+for(let i = 0; i<1000000; i++){
+    if(isVampire(i))
+        console.log(`${i} is Vampire`)
+}
+//console.log(isVampire(1260))
 console.log(findPermutations(a));
 console.log(isPermutation(a, b));
