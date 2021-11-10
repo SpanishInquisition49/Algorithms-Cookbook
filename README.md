@@ -7,6 +7,7 @@ A collection of algorithms studied for University
 * [Insertion Sort](#insertion-sort)
 * [Linear Search](#linear-search)
 * [Merge Sort](#merge-sort)
+* [MinMax Algorithm](#minmax-algorithm)
 * [Selection Sort](#selection-sort)
 
 ## Binary Search O(log(n))
