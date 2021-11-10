@@ -2,10 +2,15 @@
 A collection of algorithms studied for University
 
 ## Table of contents
+* [Binary Search](#binary-search)
 * [Hanoi Tower](#hanoi-tower)
 * [Insertion Sort](#insertion-sort)
 * [Linear Search](#linear-search)
+* [Merge Sort](#merge-sort)
 * [Selection Sort](#selection-sort)
+
+## Binary Search O(log(n))
+The Binary Search is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half, again taking the middle element to compare to the target value, and repeating this until the target value is found. If the search ends with the remaining half being empty, the target is not in the array.
 
 ## Hanoi Tower
 The Tower of Hanoi is a mathematical game or puzzle consisting of three rods and a number of disks of various diameters, which can slide onto any rod. The puzzle begins with the disks stacked on one rod in order of decreasing size, the smallest at the top, thus approximating a conical shape. The objective of the puzzle is to move the entire stack to the last rod, obeying the following rules:
@@ -15,7 +20,7 @@ Each move consists of taking the upper disk from one of the stacks and placing i
 No disk may be placed on top of a disk that is smaller than it.
 With 3 disks, the puzzle can be solved in 7 moves. The minimal number of moves required to solve a Tower of Hanoi puzzle is 2^n − 1, where n is the number of disks.
 
-## Insertion Sort
+## Insertion Sort O(n^2)
 Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain.
 Sorting is typically done in-place, by iterating up the array, growing the sorted list behind it. At each array-position, it checks the value there against the largest value in the sorted list (which happens to be next to it, in the previous array-position checked). If larger, it leaves the element in place and moves to the next. If smaller, it finds the correct position within the sorted list, shifts all the larger values up to make a space, and inserts into that correct position.
 ### Correctness of Insertion Sort
@@ -32,14 +37,14 @@ The condition causing the for loop to terminate is that j > a.length (n-1). Beca
 Sobstituting n for j in the wording of loop invariant , we have that the subarray A' [0..n-1] consists of the elements in A [0..n-1], but in sorted order.
 Observing that the subarray A' [0..n-1] is the entire array , we conclude that the entire array is sorted, and the algorithm is correct.
 
-## Linear Search
+## Linear Search O(n)
 A linear search sequentially checks each element of the list until it finds an element that matches the target value. If the algorithm reaches the end of the list, the search terminates unsuccessfully.
 ### Correctness of Linear Search
 #### Loop Invariant:
 For each index *k* in the subarray A' [0..i) => A'[k] != *v*
 Informally: the subarray A' [0..i) doesn't contain the element *v*
 #### Intialization:
-*i* = 0 => A'[0..0) => Empty Array => for each *k* index A'[k] != *v* and it's true because the empty array does not contain any element
+*i* = 0 => A'[0..0) => ⍉ => for each *k* index A'[k] != *v* and it's true because the empty array does not contain any elements
 #### Maintenance:
 For each index *k* in the subarray A' [0..i) A'[k] != *v* and A[i] != *v* <==> for each *k* in the subarray A'[0..i+1) A'[k] != *v*
 #### Termination:
@@ -47,8 +52,14 @@ The for loop may end for two reasons:
 * Return *i* if A[i] == *v*
 * *i* = A.length (last iteration of the for loop), the loop invariant is:
 for each index *k* in the subarray A' [0..A.length) A[k] != *v*, but the subarray A'[0..A.length) is the entire array A, so the value *v* is not contained in the array and the value nil is returned.   
+## Merge Sort 𝚯(nlog(n))
+Conceptually, a merge sort works as follows:
 
-## Selection Sort
+* Divide the unsorted list into n sublists, each containing one element (a list of one element is considered sorted).
+* Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+## MinMax Algorithm
+is a decision rule used in artificial intelligence, decision theory, game theory, statistics, and philosophy for minimizing the possible loss for a worst case (maximum loss) scenario. When dealing with gains, it is referred to as "maximin"—to maximize the minimum gain. Originally formulated for n-player zero-sum game theory, covering both the cases where players take alternate moves and those where they make simultaneous moves, it has also been extended to more complex games and to general decision-making in the presence of uncertainty.
+## Selection Sort O(n^2)
 Selection sort divides the input list into two parts: a sorted sublist of items which is built up from left to right at the front (left) of the list and a sublist of the remaining unsorted items that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
 
 
