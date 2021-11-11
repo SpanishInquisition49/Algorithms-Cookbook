@@ -76,7 +76,7 @@ is a decision rule used in artificial intelligence, decision theory, game theory
 Permutations.js contains some functions wich use permutations or used to produce permutations:
 * isPermutation(firstString, secondString): Return true if the secondString is a possible permutation of firstString, false otherwise
 * findPermutations(s): Return an array containing all possible permutations of the string s
-* isVampire(n): Return true if the number n is a ["vampire number"](https://en.wikipedia.org/wiki/Vampire_number), false otherwise
+* isVampire(n): Return true if the number n is a "[vampire number](https://en.wikipedia.org/wiki/Vampire_number)", false otherwise
 ## Quick Sort 𝚯(n^2)
 ### expected cost: 𝚯(nlog(n)), worst case cost: 𝚯(n^2)
 Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. For this reason, it is sometimes called partition-exchange sort. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
