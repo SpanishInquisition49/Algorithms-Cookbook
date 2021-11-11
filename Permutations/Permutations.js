@@ -5,6 +5,8 @@ Parametro -> secondString = la seconda delle due stringhe da confrontare
 Return -> true se le stringhe sono una la permutazione dell'altra
 */
 function isPermutation(firstString, secondString) {
+    if(firstString.length != secondString.length)
+        return false;
     let a = objectify(firstString);
     let b = objectify(secondString);
     for (key in a) {
