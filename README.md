@@ -5,6 +5,7 @@ A collection of algorithms studied for University
 * [Binary Search](#binary-search)
 * [Fun With Trees](#fun-with-trees)
 * [Hanoi Tower](#hanoi-tower)
+* [Heap](#heap)
 * [Insertion Sort](#insertion-sort)
 * [Linear Search](#linear-search)
 * [Merge Sort](#merge-sort)
@@ -32,7 +33,17 @@ Only one disk may be moved at a time.
 Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 No disk may be placed on top of a disk that is smaller than it.
 With 3 disks, the puzzle can be solved in 7 moves. The minimal number of moves required to solve a Tower of Hanoi puzzle is 2^n − 1, where n is the number of disks.
-
+## Heap
+ A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: in a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C. In a min heap, the key of P is less than or equal to the key of C. The node at the "top" of the heap (with no parents) is called the root node.
+ Heap.js is a collection of common function used for Heap manipulation:
+ * father(i): Return the index rapresenting the father of the node
+ * childs(i): Return an object {sx:i, dx:j} containing both childs index
+ * Heap(a): Create a new heap starting from the given array (a)
+ * maxHeapify(h): This function is used for mantaining true the second property of the heap (h)
+ * reheapificationUpward(v, h): Add the value v in the heap (h)
+ * reheapificationDownward(h): Remove the root from the heap (h)
+ * heapSort(h, decreasing): Return an array sorted in crescent order or decreasing order based on the decreasing parameter with a starting heap (h) Side Effects: the function consume the heap if not given by deep copy
+ * isHeap(h): Return true if the given array is an heap, false otherwise
 ## Insertion Sort O(n^2)
 Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain.
 Sorting is typically done in-place, by iterating up the array, growing the sorted list behind it. At each array-position, it checks the value there against the largest value in the sorted list (which happens to be next to it, in the previous array-position checked). If larger, it leaves the element in place and moves to the next. If smaller, it finds the correct position within the sorted list, shifts all the larger values up to make a space, and inserts into that correct position.
