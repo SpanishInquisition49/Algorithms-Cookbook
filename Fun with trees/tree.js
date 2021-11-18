@@ -1,3 +1,5 @@
+const { getRandomInt } = require("../_Miscellaneous/misc")
+
 class PathSegment {
     constructor(nodeIndex, v){
         return {path:nodeIndex, value:v}
@@ -124,42 +126,19 @@ class Tree {
         
     }
 
-    static printPath(path, index = 0){
+    static printPath(path){
         let res = ""
         console.log(path)
         if(path == undefined)
             return res
-        for(index = 0; index < path.length; index++)
+        for(let index = 0; index < path.length; index++)
             res += path[index].value + "->"
-        /*if(index == path.length)
-            return path.length
-        console.log(t.value)
-        if(t.childs != undefined)
-            this.printPathRootToX(t.childs[path[index+1].nodeIndex], path, index+1)
-            */
-        //console.log(res)
         res = res.substr(0, res.length-2)
         return res
     }
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-let tree = new Tree(10, 4, false)
-console.log(tree)
-//console.log(Tree.reduce(tree, (x) => {return x}))
-Tree.map(tree, (x) => {return x*2})
-console.log(tree)
-console.log("Sum:" + Tree.reduce(tree, (x) => {return x}))
-let max = Tree.max(tree)
-console.log("Max:" + max)
-let min = Tree.min(tree)
-console.log("Min:" + min)
-console.log("Search:" + Tree.search(max))
-let p = Tree.pathFromRootToValue(tree, max)
-console.log(p)
-console.log(Tree.printPath(tree, p))
-console.log(`Path from ${max} to ${min}: ` + Tree.printPath(Tree.pathFromXtoY(tree, max, min)))
-//console.log(`Path from ${min} to ${max}: ${Tree.printPathRootToX(Tree.pathFromXtoY(tree, min, max))}`)
+module.exports = {
+    Tree,
+    PathSegment
+}

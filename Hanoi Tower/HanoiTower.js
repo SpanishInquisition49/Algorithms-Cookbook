@@ -48,17 +48,21 @@ Parametro -> a = pila iniziale
 Parametro -> b = pila ausiliare
 Parametro -> c = pila di destinazione
 */
-function hanoi(n, a, b, c) {
+function hanoi(n, a, b, c, verbose = false) {
     if(n == 1){
         c.push(a.pop())
-        console.log("=======================")
-        printInOrder(a,b,c)
+        if(verbose){
+            console.log("=======================")
+            printInOrder(a,b,c)
+        }
     }
     else {
         hanoi(n-1, a,c,b)
         c.push(a.pop())
-        console.log("=======================")
-        printInOrder(a,b,c)
+        if(verbose){
+            console.log("=======================")
+            printInOrder(a,b,c)
+        }
         hanoi(n-1, b, a, c)
     }
 }
@@ -73,3 +77,8 @@ printInOrder(a,b,c)
 hanoi(a.array.length, a, b, c)
 console.log("=======================")
 printInOrder(a,b,c)
+
+module.exports = {
+    hanoi,
+    printInOrder
+}
