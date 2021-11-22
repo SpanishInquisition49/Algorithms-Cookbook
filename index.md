@@ -1,3 +1,6 @@
+# Algorithms Cookbook
+A collection of algorithms studied for University.
+
 ## Table of contents
 * [Binary Search](#binary-search)
 * [Fun With Trees](#fun-with-trees)
