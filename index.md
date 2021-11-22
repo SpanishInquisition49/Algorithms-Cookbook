@@ -1,15 +1,15 @@
 ## Table of contents
-* [Binary Search](#binary-search)
+* [Binary Search](#binary-search-o(log(n)))
 * [Fun With Trees](#fun-with-trees)
 * [Hanoi Tower](#hanoi-tower)
 * [Heap](#heap)
-* [Insertion Sort](#insertion-sort)
-* [Linear Search](#linear-search)
-* [Merge Sort](#merge-sort)
+* [Insertion Sort](#insertion-sort-o(n^2))
+* [Linear Search](#linear-search-o(n))
+* [Merge Sort](#merge-sort-𝚯(nlog(n)))
 * [MinMax Algorithm](#minmax-algorithm)
 * [Permutations](#permutations)
-* [Quick Sort](#quick-sort)
-* [Selection Sort](#selection-sort)
+* [Quick Sort](#quick-sort-𝚯(n^2))
+* [Selection Sort](#selection-sort-o(n^2))
 
 ## Binary Search O(log(n))
 The Binary Search is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half, again taking the middle element to compare to the target value, and repeating this until the target value is found. If the search ends with the remaining half being empty, the target is not in the array.
