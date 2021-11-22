@@ -1,4 +1,4 @@
-#Algorithms Cookbook
+# Algorithms Cookbook
 ## Table of contents
 * [Binary Search](#binary-search-o(log(n)))
 * [Fun With Trees](#fun-with-trees)
