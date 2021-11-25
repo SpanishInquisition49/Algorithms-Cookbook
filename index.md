@@ -51,22 +51,23 @@ La Torre di Hanoi è un puzzle matematico in cui lo scopo è spostare un numero 
 Con 3 dischi si può risolvere il gioco in 7 mosse. Il numero minimo di mosse è 2^_n_ - 1 dove _n_ è il numero di dischi. 
 
 ## Heap
- A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: in a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C. In a min heap, the key of P is less than or equal to the key of C. The node at the "top" of the heap (with no parents) is called the root node.
-Heap.js is a collection of common function used for Heap manipulation:
- * **father(i)**: Return the index rapresenting the father of the node
- * **childs(i)**: Return an object {sx:i, dx:j} containing both childs index
- * **Heap(a)**: Create a new heap starting from the given array (a)
- * **maxHeapify(h)**: This function is used for mantaining true the second property of the heap (h)
- * **reheapificationUpward(v, h)**: Add the value v in the heap (h)
- * **reheapificationDownward(h)**: Remove the root from the heap (h)
- * **heapSort(h, decreasing)**: Return an array sorted in crescent order or decreasing order based on the decreasing parameter with a starting heap (h) Side Effects:
- the function consume the heap if not given by deep copy
- * **isHeap(h)**: Return true if the given array is an heap, false otherwise
+Lo Heap logicamente è un albero che possiede due proprità:
+* Deve essere un albero "quasi completo" e tutte le foglie devono essere a sinistra (non devono esserci buchi tra le foglie)
+* In un Max Heap ogni nodo _C_ deve avere valore minore od uguale rispetto al nodo _Padre_. Il nodo senza genitori è chiamato radice.
+
+Heap.js contiene alcune delle funzioni comunemente usate su Heap:
+ * **father(i)**: Restituisce l'indice del nodo _Padre_ di _i_.
+ * **childs(i)**: Restituisce un oggetto {sx:i, dx:j} contenente gli indici di entrambi i figli.
+ * **Heap(a)**: Crea e Restituisce un Heap a partire dall'array _a_.
+ * **maxHeapify(h)**: Mantiene la proprietà di Max Heap valida.
+ * **reheapificationUpward(v, h)**: Aggiunge un valore _v_ allo Heap mantenendo valide le proprità di uno Heap.
+ * **reheapificationDownward(h, i)**: Rimuove il nodo in posizione _i_ (Default 0) dallo Heap _h_ mantenendo le proprietà di uno Heap.
+ * **heapSort(h, decreasing)**: Restituisce un Array ordinato in modo crescente o decrescende a seconda del parametro _decreasing_. Effetti Collaterali: la funzione consuma l'array _h_. (Dopo l'esecuzione _h_ = [])
+ * **isHeap(h)**: Restituisce _True_ se sono verificate le proprità di uno Heap su _h_, _False_ altrimenti.
 
 ## Insertion Sort 
-### Complexity O(n^2)
-Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain.
-Sorting is typically done in-place, by iterating up the array, growing the sorted list behind it. At each array-position, it checks the value there against the largest value in the sorted list (which happens to be next to it, in the previous array-position checked). If larger, it leaves the element in place and moves to the next. If smaller, it finds the correct position within the sorted list, shifts all the larger values up to make a space, and inserts into that correct position.
+### Complessità O(n^2)
+L'algoritmo solitamente ordina la sequenza sul posto. Si assume che la sequenza da ordinare sia partizionata in una sottosequenza già ordinata, all'inizio composta da un solo elemento, e una ancora da ordinare.
 
 ```javascript
 //Javascript Implementation
@@ -83,15 +84,15 @@ function insertionSort(a){
 }
 ```
 
-### Correctness of Insertion Sort
+### Correttezza dell'Insertion Sort
 at the start of each iteration of the for loop, wich is indexed by j, the subarray A' [0..j-1] is sorted, and the remaining subarray A'' [j+1..n-1] is not sorted.
 #### Loop invariant:
 at the start of each iteration of the for loop the subarray A' [0..j-1] consists of the elements originally in A [0..j-1], but in sorted order.
 #### Initialization:
-When j = 1 (first iteration) the subarray A' [0..1] consists of just a single element A[0] and it is sorted.
+Quando j = 1 (prima iterazione) il subarray A' [0..1] è formato solo dall'elemento A[0] ed è quindi ordinato.
 #### Maintenance:
-Informally , the body of the for loop works by moving A[j-1], A[j-2], A[j-3], and so on by one position to the right until it finds the proper position for A[j].
-The subarray A' [0..j] then consists of the elements originally in A[0..j], but in sorted order. Incrementing j for the next iteration of the loop then preserves the loop invariant.
+Informalmente , il corpo del for loop sposta gli elementi A[j-1], A[j-2], A[j-3], etc... di una posizione verso destra fino a che non viene trovata la corretta posizione per A[j].
+Il subarray A' [0..j] è formato dagli elementi originariamente in A[0..j], ma ordinati. Incrementando _j_ per the la prossima iterazione del loop preserva quindi il loop invariant.
 #### Termination:
 The condition causing the for loop to terminate is that j > a.length (n-1). Because each loop iteration increases j by 1, we must have j = n at that time.
 Sobstituting n for j in the wording of loop invariant , we have that the subarray A' [0..n-1] consists of the elements in A [0..n-1], but in sorted order.
