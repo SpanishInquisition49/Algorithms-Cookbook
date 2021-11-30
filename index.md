@@ -94,13 +94,13 @@ Quando j = 1 (prima iterazione) il subarray A' [0..1] è formato solo dall'eleme
 Informalmente , il corpo del for loop sposta gli elementi A[j-1], A[j-2], A[j-3], etc... di una posizione verso destra fino a che non viene trovata la corretta posizione per A[j].
 Il subarray A' [0..j] è formato dagli elementi originariamente in A[0..j], ma ordinati. Incrementando _j_ per the la prossima iterazione del loop preserva quindi il loop invariant.
 #### Termination:
-The condition causing the for loop to terminate is that j > a.length (n-1). Because each loop iteration increases j by 1, we must have j = n at that time.
-Sobstituting n for j in the wording of loop invariant , we have that the subarray A' [0..n-1] consists of the elements in A [0..n-1], but in sorted order.
-Observing that the subarray A' [0..n-1] is the entire array , we conclude that the entire array is sorted, and the algorithm is correct.
+La condizionew che causa la fine del for loop è: j > a.length (n-1). Dato che ad ogni iterazione del loop j viene incrementato di 1, avremo che j = n.
+Sostituendo j con n nel loop invariant otteniamo: il subarray A' [0..n-1] consisnte negli elementi di A [0..n-1], ma ordinati.
+Osserviamo che A' [0..n-1] è l'intero array e possiamo quindi concludere che l'array è ordinato e che l'algoritmo è corretto.
 
-## Linear Search 
-### Complexity O(n)
-A linear search sequentially checks each element of the list until it finds an element that matches the target value. If the algorithm reaches the end of the list, the search terminates unsuccessfully.
+## Ricerca Lineare 
+### Complessità O(n)
+La ricerca lineare controlla in sequenza ogni elemento dell'array fino alla prima occorrenza dell'elemento _v_. Se l'algoritmo raggiunge la fine dell'array senza aver trovato un occorrenza ritorna _Nil_ per indicare che l'elemento non è presente in A.
 
 ```javascript
 //Javascript Implementation
@@ -113,25 +113,26 @@ function linearSearch(a, v){
 }
 ```
 
-### Correctness of Linear Search
+### Correttezza della ricerca lineare
 #### Loop Invariant:
-For each index *k* in the subarray A' [0..i) => A'[k] != *v*
-Informally: the subarray A' [0..i) doesn't contain the element *v*
+Per ogni indice *k* nel subarray A' [0..i) => A'[k] != *v*
+Informalmente: il subarray A' [0..i) non contiene l'elemento *v*
 #### Intialization:
-*i* = 0 => A'[0..0) => ⍉ => for each *k* index A'[k] != *v* and it's true because the empty array does not contain any elements
+*i* = 0 => A'[0..0) => ⍉ => per ogni indice *k* vale che: A'[k] != *v* ed è vero perché l'array vuoto non contiene elementi
 #### Maintenance:
-For each index *k* in the subarray A' [0..i) A'[k] != *v* and A[i] != *v* <==> for each *k* in the subarray A'[0..i+1) A'[k] != *v*
+per ogni indice *k* nel subarray A' [0..i) vale che A'[k] != *v* e A[i] != *v* <==> per ogni indice *k* nel subarray A'[0..i+1) vale che A'[k] != *v*
 #### Termination:
-The for loop may end for two reasons:
-* Return *i* if A[i] == *v*
-* *i* = A.length (last iteration of the for loop), the loop invariant is:
-for each index *k* in the subarray A' [0..A.length) A[k] != *v*, but the subarray A'[0..A.length) is the entire array A, so the value *v* is not contained in the array and the value nil is returned.   
+Il loop può terminare per due ragioni:
+* Return *i* se A[i] == *v*
+* *i* = A.length (ultima iterazione del loop), il loop invariant è:
+per ogni indice *k* nel subarray A' [0..A.length) vale che A[k] != *v*, ma il subarray A'[0..A.length) è l'intero array A, quindi il valore *v* non è presente nell'array e viene ritornato _Nil_.   
 
 ## Merge Sort 
 ### Complexity 𝚯(nlog(n))
-Conceptually, a merge sort works as follows:
-* Divide the unsorted list into n sublists, each containing one element (a list of one element is considered sorted).
-* Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+Il Merge sort è un algoritmo di tipo _divide et impera_ in cui:
+* Divide: l'array A in n subarray, ognuno contente un elemento (l'array di un elemento solo è considerato ordinato)
+* Impera: viene fatto il merge di due subarray _ordinati_ ritornando un solo array ordinato di lunghezza A'.length + A''.length
+viene ripetuto il merge fino a che non riotteniamo un solo array ordinato.
 
 ```javascript
 //Javascript Implementation
@@ -157,15 +158,17 @@ function merge(left, right) {
 ```
 
 ## MinMax Algorithm
-is a decision rule used in artificial intelligence, decision theory, game theory, statistics, and philosophy for minimizing the possible loss for a worst case (maximum loss) scenario. When dealing with gains, it is referred to as "maximin"—to maximize the minimum gain. Originally formulated for n-player zero-sum game theory, covering both the cases where players take alternate moves and those where they make simultaneous moves, it has also been extended to more complex games and to general decision-making in the presence of uncertainty.
+Il minimax, nella teoria delle decisioni, è un metodo per minimizzare la massima (minimax) perdita possibile; in alternativa, per massimizzare il minimo guadagno (maximin). Fu scoperto nella teoria dei giochi in caso di gioco a somma zero con due giocatori.
+
 ## Permutations
-Permutations.js contains some functions wich use permutations or used to produce permutations:
-* **isPermutation(firstString, secondString)**: Return true if the secondString is a possible permutation of firstString, false otherwise
-* **findPermutations(s)**: Return an array containing all possible permutations of the string s
-* **isVampire(n)**: Return true if the number n is a "[vampire number](https://en.wikipedia.org/wiki/Vampire_number)", false otherwise
+Permutations.js contiene alcune funzioni functions che fanno uso di permutazioni o generano permutazioni:
+* **isPermutation(firstString, secondString)**: Return true se _secondString_ è una permutazione di _firstString_, false altrimenti.
+* **findPermutations(s)**: Return an array containing all possible permutations of the string s.
+* **isVampire(n)**: Return true se il numero _n_ è un "[Numero del Vampiro](https://en.wikipedia.org/wiki/Vampire_number)", false altriemti.
 
 ## Quick Sort
-### expected complexity: 𝚯(nlog(n)), worst case complexity: 𝚯(n^2)
+### Complessità nel caso medio: 𝚯(nlog(n)), nel caso pessimo: 𝚯(n^2)
+il Quick Sort è un algoritmo _divide et impera_. 
 Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. For this reason, it is sometimes called partition-exchange sort. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
 
 Quicksort is a comparison sort, meaning that it can sort items of any type for which a "less-than" relation (formally, a total order) is defined. Efficient implementations of Quicksort are not a stable sort, meaning that the relative order of equal sort items is not preserved.
@@ -195,11 +198,11 @@ function partition(items, left, right) {
 function quickSort(items, left = 0, right = items.length - 1) {
     var index;
     if (items.length > 1) {
-        index = partition(items, left, right); //index returned from partition
-        if (left < index - 1) { //more elements on the left side of the pivot
+        index = partition(items, left, right);
+        if (left < index - 1) {
             quickSort(items, left, index - 1);
         }
-        if (index < right) { //more elements on the right side of the pivot
+        if (index < right) {
             quickSort(items, index, right);
         }
     }
