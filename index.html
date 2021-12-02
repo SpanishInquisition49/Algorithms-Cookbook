@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Algoritmhs CookBook</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let elements = [...document.getElementsByClassName("sorting")]
+                elements.forEach((element) => {
+                    element.innerHTML='<object class="full" type="text/html" data="canvas.html?Sort='+element.id+'" ></object>'
+                })
+            });
+        </script> 
+    </head>
+    <body>
+        <h1>Algoritmhs CookBook</h1>
+        <div class="grid">
+            <div class="item">
+                <h2>Radix Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n+k)</h4>
+                        <p>
+                            Radix sort utilizza un procedimento controintuitivo per l'uomo, ma più facilmente implementabile. Esegue gli ordinamenti per posizione della cifra ma partendo dalla cifra meno significativa. Questo affinché l'algoritmo non si trovi a dovere operare ricorsivamente su sottoproblemi di dimensione non valutabili a priori.
+                        </p>
+                    </div>
+                    <div id="radixsort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Counting Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n)</h4>
+                        <p>
+                            Il Counting sort è un algoritmo di ordinamento per valori numerici interi con complessità lineare. L'algoritmo si basa sulla conoscenza a priori dell'intervallo in cui sono compresi i valori da ordinare.
+                            L'algoritmo conta il numero di occorrenze di ciascun valore presente nell'array da ordinare, memorizzando questa informazione in un array temporaneo di dimensione pari all'intervallo di valori. Il numero di ripetizioni dei valori inferiori indica la posizione del valore immediatamente successivo. 
+                        </p>
+                    </div>
+                    <div id="countingsort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Merge Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità 𝚯(nlog(n))</h4>
+                        <p>
+                            Il Merge sort è un algoritmo di tipo divide et impera in cui:
+                            <ul>
+                                <li><em>Divide</em>: l’array A in n subarray, ognuno contente un elemento (l’array di un elemento solo è considerato ordinato)</li>
+                                <li><em>Impera</em>: viene fatto il merge di due subarray ordinati ritornando un solo array ordinato di lunghezza A’.length + A’‘.length viene ripetuto il merge fino a che non riotteniamo un solo array ordinato.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div id="mergesort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Quick Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità nel caso pessimo O(n²)</h4>
+                        <p>
+                            Quicksort is a divide-and-conquer algorithm. It works by selecting a ‘pivot’ element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. For this reason, it is sometimes called partition-exchange sort. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
+                            Quicksort is a comparison sort, meaning that it can sort items of any type for which a “less-than” relation (formally, a total order) is defined. Efficient implementations of Quicksort are not a stable sort, meaning that the relative order of equal sort items is not preserved.
+                        </p>
+                    </div>
+                    <div id="quicksort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Insertion Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n²)</h4>
+                        <p>
+                            L’algoritmo solitamente ordina la sequenza sul posto. Si assume che la sequenza da ordinare sia partizionata in una sottosequenza già ordinata, all’inizio composta da un solo elemento, e una ancora da ordinare.
+                        </p>
+                    </div>
+                    <div id="insertionsort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Bubble Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n²)</h4>
+                        <p>
+                            il Bubble sort o ordinamento a bolla è un semplice algoritmo di ordinamento di liste di dati. In esso l'insieme di dati viene scansionato, ogni coppia di elementi adiacenti viene comparata ed i due elementi vengono invertiti di posizione se sono nell'ordine sbagliato. L'algoritmo continua nuovamente a ri-eseguire questi passaggi su tutta la lista fino a quando non vengono più eseguiti scambi, situazione che indica che la lista è ordinata.
+                        </p>
+                    </div>
+                    <div id="bubblesort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Selection Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n²)</h4>
+                        <p>
+                            L'algoritmo seleziona di volta in volta il numero minore nella sequenza di partenza e lo sposta nella sequenza ordinata; di fatto la sequenza viene suddivisa in due parti: la sottosequenza ordinata, che occupa le prime posizioni dell'array, e la sottosequenza da ordinare, che costituisce la parte restante dell'array.
+                        </p>
+                    </div>
+                    <div id="selectionsort" class="sorting"></div>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Cocktail Shaker Sort</h2>
+                <div class="subGrid">
+                    <div>
+                        <h4>Complessità O(n²)</h4>
+                        <p>
+                            è un algoritmo di ordinamento dei dati sviluppato dalla Sun Microsystems. Lo shaker sort è sostanzialmente una variante del bubble sort: si differenzia da quest'ultimo per l'indice del ciclo più interno che, anziché scorrere dall'inizio alla fine, inverte la sua direzione ad ogni ciclo. Pur mantenendo la stessa complessità, ovvero O(n²), lo shaker sort riduce la probabilità che l'ordinamento abbia un costo corrispondente al caso peggiore.
+                        </p>
+                    </div>
+                    <div id="cocktailsort" class="sorting"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
