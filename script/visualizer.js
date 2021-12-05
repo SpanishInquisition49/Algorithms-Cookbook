@@ -30,6 +30,63 @@ const getSorting = () => {
       return radixSort
     case "cocktailsort":
       return cocktailSort
+    case "bogosort":
+      return bogoSort
+    case "heapsort":
+      return heapSort
+    case "binarysearch":
+      return runBinarySearch
+    case "linearsearch":
+      return runLinearSearch
+  }
+}
+
+const getSortingElements = () =>{
+  switch(sortingAlgorithm){
+    case "mergesort":
+      return 500
+    case "insertionsort":
+      return 100
+    case "quicksort":
+      return 500
+    case "bubblesort":
+      return 100
+    case "selectionsort":
+      return 100
+    case "countingsort":
+      return 500
+    case "radixsort":
+      return 500
+    case "cocktailsort":
+      return 100
+    case "bogosort":
+      return 8
+    case "heapsort":
+      return 500
+    case "binarysearch":
+      return 100
+    case "linearsearch":
+      return 100    
+  }
+}
+
+const getSpeed = () => {
+  switch(sortingAlgorithm){
+    case "mergesort":
+    case "insertionsort":
+    case "quicksort":
+    case "bubblesort":
+    case "selectionsort":
+    case "countingsort":
+    case "radixsort":
+    case "cocktailsort":
+    case "bogosort":
+    case "heapsort":
+      return 10;
+    case "binarysearch":
+      return 25
+    case "linearsearch":
+      return 100;    
   }
 }
 
@@ -37,15 +94,15 @@ const SORTALGORITHMS = {
   MERGESORT: "mergesort",
 }
 
-const ELEMENTS = 100;
-const SPEED = 10;
+const ELEMENTS = getSortingElements()
+const SPEED = getSpeed();
 const SLEEPINTERVAL_MS = 2000;
 const green = "#00A878";
 const conforntColor = "#246EB9"
 const swapColor = "#FF6663";
 const assignmentColor = "#FFD166";
 const arrayColor = "#B1A9B1";
-var selectedIndex = -1;
+var selectedIndex = null;
 
 const actionsMap = {
   [ACTIONS.SORT]: (action, members) => members[action.data].sorted(),
@@ -65,9 +122,11 @@ const actionsMap = {
     members[i].setValue(getProportionalHeigth(j, ELEMENTS), assignmentColor);
   },
   [ACTIONS.SELECTEDINDEX]: (action, members) => {
+    faster = false
     const [newI, oldI] = action.data;
     members[newI].setColor(swapColor);
-    members[oldI].setColor(arrayColor);
+    if(oldI != null)
+      members[oldI].setColor(arrayColor);
     selectedIndex = newI;
   },
   [ACTIONS.RELOADPAGE]: (action, members) => {
@@ -279,6 +338,68 @@ const radixSort = (arr, onAction, size = arr.length) => {
   }
 }
 
+//INIZIO SESSO
+
+const childs = (i) => {
+  return {sx:2*i+1, dx:2*(i+1)};
+}
+
+const buildMaxHeap = (a, len, onAction) => {
+  for(let i = len; i>= 0; i--)
+      maxHeapify(a,i,len, onAction)
+  return a
+}
+
+const maxHeapify = (h, i, n, onAction) => {
+  var c = childs(i)
+  let max = c.sx <= n && h[c.sx] > h[i] ? c.sx : i
+  max = c.dx <= n && h[c.dx] > h[max] ? c.dx : max
+  if(max != i){
+      swap(h, i, max, onAction)
+      maxHeapify(h, max, n, onAction)
+  }
+}
+
+const swap = (a,i,j, onAction) => {
+  tmp = a[i]
+  a[i] = a[j]
+  a[j] = tmp
+  onAction({type:ACTIONS.SWAP, data:[i,j]})
+}
+
+const reheapificationDownward = (h, length, onAction) => {
+  swap(h, 0, length, onAction)
+  for(let i = length; i>= 0; i--)
+      maxHeapify(h,i,length, onAction)
+}
+
+const heapSort = (a, onAction) => {
+  console.log(a)
+  if(!isHeap(a))
+      buildMaxHeap(a, a.length-1, onAction)
+  let index = a.length-1
+  while(index != 0){
+      swap(a,0, index, onAction)
+      index=index-1
+      buildMaxHeap(a, index, onAction)
+  }
+  console.log(a)
+}
+
+const isHeap = (h) => {
+  for(let i = 0; i<Math.floor(h.length/2); i++){
+      let c = childs(i)
+      if(h[i] < h[c.sx] || h[i] < h[c.dx])
+          return false
+  }
+  return true
+}
+
+
+
+
+//SESSO NUDO PAZZO
+
 function ArrayMember(x, y, width, height, color = arrayColor) {
   this.x = x;
   this.y = y;
@@ -396,6 +517,30 @@ const mergeSort = (arr, onAction, l=0, r=arr.length-1) => {
     }
 }
 
+const binarySearch = (a, v, onAction, l=0, r=a.length-1) => {
+  if(l >= r){
+    onAction({type:ACTIONS.COMPARE, data:[r,r]})
+    return a[r] == v ? i : -1
+  }
+  let half = Math.trunc((l+r)/2)
+  onAction({type:ACTIONS.COMPARE, data:[half,half]})
+  if(a[half] == v)
+    return half
+  if(a[half] > v)
+    return binarySearch(a, v, onAction, l, half)
+  else 
+    return binarySearch(a, v, onAction, half +1, r)
+}
+
+const linearSearch = (a, v, onAction) => {
+  for(let i = 0; i<a.length; i++){
+    onAction({type:ACTIONS.COMPARE, data:[i,i]})
+    if(a[i] == v)
+    return i
+  }
+  return -1
+}
+
 const drawAll = () => arrayMembers.forEach((m) => m.draw());
 
 drawAll();
@@ -406,7 +551,7 @@ const myAction = (action) => {
       actionsMap[action.type](action, arrayMembers);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
       drawAll(arrayMembers);
-      arrayMembers.forEach((m) => m == arrayMembers.selectedIndex ? m.setColor(swapColor) : m.resetColor());
+      arrayMembers.forEach((m, i) => i == selectedIndex ? m.setColor(swapColor) : m.resetColor());
     }, ticks * SPEED);
   }
 
@@ -419,12 +564,49 @@ const checkSorted  = async (a) => {
   return await Promise.resolve(true);
 }
 
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+}
+
+const runBinarySearch = (a, onAction) => {
+  radixSort(a, onAction)
+  let index = getRandomInt(ELEMENTS)
+  onAction({type:ACTIONS.SELECTEDINDEX, data:[index, selectedIndex]})
+  let f = binarySearch(a, a[index], onAction)
+  if(f != -1){
+    onAction({type:ACTIONS.SORT, data: f})
+    onAction({type:ACTIONS.RELOADPAGE, data:[]})
+  }
+  else{
+    onAction({type:ACTIONS.RELOADPAGE, data:[]})
+  }
+  console.log("Returned:" + f + " Searched for:"+selectedIndex)
+  return "SEARCH"
+}
+
+const runLinearSearch = (a, onAction) => {
+  let index = getRandomInt(ELEMENTS)
+  onAction({type:ACTIONS.SELECTEDINDEX, data:[index, selectedIndex]})
+  let f = linearSearch(a, a[index], onAction)
+  if(f != -1){
+    onAction({type:ACTIONS.SORT, data: f})
+    onAction({type:ACTIONS.RELOADPAGE, data:[]})
+  }
+  else{
+    onAction({type:ACTIONS.RELOADPAGE, data:[]})
+  }
+  console.log("Returned:" + f + " Searched for:"+selectedIndex)
+  return "SEARCH"
+}
 
 const runSort = (f) => {
-    f(randomArray, myAction);
-    markSorted(randomArray, myAction)
-  }
-  runSort(getSorting())
+    res = f(randomArray, myAction);
+    if(res != "SEARCH")
+      markSorted(randomArray, myAction)
+}
+
+
+runSort(getSorting())
   /*
   setTimeout(function(){
     window.location.reload(1);
