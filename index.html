@@ -64,8 +64,7 @@
                     <div>
                         <h4>Complessità nel caso pessimo O(n²)</h4>
                         <p>
-                            Quicksort is a divide-and-conquer algorithm. It works by selecting a ‘pivot’ element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. For this reason, it is sometimes called partition-exchange sort. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
-                            Quicksort is a comparison sort, meaning that it can sort items of any type for which a “less-than” relation (formally, a total order) is defined. Efficient implementations of Quicksort are not a stable sort, meaning that the relative order of equal sort items is not preserved.
+                            Quicksort è un algoritmo di ordinamento ricorsivo in place non stabile. Tale procedura ricorsiva viene comunemente detta partition: preso un elemento chiamato "pivot" da una struttura dati (es. array) si pongono gli elementi minori a sinistra rispetto al pivot e gli elementi maggiori a destra. L'operazione viene quindi reiterata sui due insiemi risultanti fino al completo ordinamento della struttura.
                         </p>
                     </div>
                     <div id="quicksort" class="sorting"></div>
@@ -75,9 +74,17 @@
                 <h2>Heap Sort</h2>
                 <div class="subGrid">
                     <div>
-                        <h4>Complessità O(n!)</h4>
+                        <h4>Complessità O(nlog(n))</h4>
                         <p>
-                            Questo algoritmo è bello.
+                            L'heapsort, per eseguire l'ordinamento, utilizza una struttura chiamata heap; un heap è rappresentabile con un albero binario in cui tutti i nodi seguono una data proprietà, detta priorità. Esso è completo almeno fino al penultimo livello dell'albero (con le foglie sull'ultimo livello compattate a sinistra) e ad ogni nodo corrisponde uno ed un solo elemento.
+
+                            In uno heap decrescente (utilizzato per ordinare ad esempio un array in senso crescente) ogni nodo padre contiene un valore maggiore o uguale a quello dei suoi due figli diretti, di conseguenza risulterà maggiore anche di tutti i nodi che si trovano nel sottoalbero di cui esso è la radice; questo non implica affatto che nodi a profondità maggiore contengano valori minori di quelli a profondità minore.
+
+                            Quindi in ogni istante, in un heap decrescente, la radice contiene il valore maggiore.
+
+                            Questa struttura è molto usata, in particolare, per l'ordinamento di array.
+
+                            Per comprendere meglio il funzionamento dell'algoritmo è bene capire che gli elementi che si trovano nella seconda metà dell'array rappresenteranno foglie dello heap e quindi esse saranno già al loro posto giusto; non vi è infatti alcun elemento dopo di esse.
                         </p>
                     </div>
                     <div id="heapsort" class="sorting"></div>
@@ -135,9 +142,10 @@
                 <h2>Bogo Sort</h2>
                 <div class="subGrid">
                     <div>
-                        <h4>Complessità O(n!)</h4>
+                        <h4>Complessità O(n*n!)</h4>
                         <p>
-                            Questo algoritmo è bello.
+                            Il Bogo sort un algoritmo di ordinamento particolarmente inefficiente. Trasportandolo sull'ordinamento di un mazzo di carte, esso consisterebbe nel mischiare il mazzo a caso per poi controllare se è ben ordinato e, se non lo è, ricominciare da capo. Altri nomi con i quali è conosciuto questo algoritmo sono: stupid sort, blort sort, bort sort, monkey sort, random sort, stochastic sort, goni sort e drunk man sort.
+                            Non è un algoritmo stabile.
                         </p>
                     </div>
                     <div id="bogosort" class="sorting"></div>
@@ -147,9 +155,9 @@
                 <h2>Binary Search</h2>
                 <div class="subGrid">
                     <div>
-                        <h4>Complessità O(n!)</h4>
+                        <h4>Complessità O(log(n))</h4>
                         <p>
-                            Questo algoritmo è bello.
+                            L'algoritmo cerca un elemento all'interno di un array che deve necessariamente essere ordinato in ordine crescente, effettuando mediamente meno confronti rispetto ad una ricerca sequenziale, e quindi più rapidamente rispetto ad essa perché, sfruttando l'ordinamento, dimezza l'intervallo di ricerca ad ogni passaggio.
                         </p>
                     </div>
                     <div id="binarysearch" class="sorting"></div>
@@ -159,9 +167,9 @@
                 <h2>Linear Search</h2>
                 <div class="subGrid">
                     <div>
-                        <h4>Complessità O(n!)</h4>
+                        <h4>Complessità O(n)</h4>
                         <p>
-                            Questo algoritmo è bello.
+                            L'algoritmo controlla in sequenza gli elementi dell'insieme, arrestandosi quando ne trova uno che soddisfa il criterio di ricerca; non potendosi avvalere di alcun ordinamento tra gli elementi, l'algoritmo può concludere con certezza che l'insieme non contiene alcun elemento corrispondente solo dopo averli verificati tutti, richiedendo pertanto un numero di controlli, nel caso peggiore, pari alla cardinalità dell'intero insieme.
                         </p>
                     </div>
                     <div id="linearsearch" class="sorting"></div>
