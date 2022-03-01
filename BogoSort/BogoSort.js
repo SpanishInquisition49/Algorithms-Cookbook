@@ -1,15 +1,15 @@
-const { getRandomInt, swapInsideArray, isSorted } = require("../_Miscellaneous/misc")
-
-function bogoSort(a){
-    let sorted = false
-    while(!sorted){
-        let i = getRandomInt(a.length)
-        let j = getRandomInt(a.length)
-        swapInsideArray(a,i,j)
-        sorted = isSorted(a)
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.bogoSort = void 0;
+var misc_1 = require("../_Miscellaneous/misc");
+function bogoSort(a) {
+    var sorted = false;
+    while (!sorted) {
+        var i = (0, misc_1.getRandomInt)(a.length);
+        var j = (0, misc_1.getRandomInt)(a.length);
+        (0, misc_1.swapInsideArray)(a, i, j);
+        sorted = (0, misc_1.isSorted)(a);
     }
 }
-
-module.exports = {
-    bogoSort
-}
+exports.bogoSort = bogoSort;
+//# sourceMappingURL=BogoSort.js.map
