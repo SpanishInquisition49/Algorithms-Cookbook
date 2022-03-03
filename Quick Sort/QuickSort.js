@@ -1,26 +1,30 @@
-const misc = require("../_Miscellaneous/misc");
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.quickSort = exports.partition = void 0;
+var misc_1 = require("../_Miscellaneous/misc");
 function partition(items, left, right) {
-    var pivot = items[Math.floor((right + left) / 2)]
-    i = left
-    j = right
+    var pivot = items[Math.floor((right + left) / 2)];
+    var i = left;
+    var j = right;
     while (i <= j) {
         while (items[i] < pivot) {
-            i++
+            i++;
         }
         while (items[j] > pivot) {
-            j--
+            j--;
         }
         if (i <= j) {
-            misc.swapInsideArray(items, i, j)
-            i++
-            j--
+            (0, misc_1.swapInsideArray)(items, i, j);
+            i++;
+            j--;
         }
     }
     return i;
 }
-
-function quickSort(items, left = 0, right = items.length - 1) {
+exports.partition = partition;
+function quickSort(items, left, right) {
+    if (left === void 0) { left = 0; }
+    if (right === void 0) { right = items.length - 1; }
     var index;
     if (items.length > 1) {
         index = partition(items, left, right); //index returned from partition
@@ -33,8 +37,5 @@ function quickSort(items, left = 0, right = items.length - 1) {
     }
     return items;
 }
-
-module.exports = {
-    quickSort,
-    partition
-}
+exports.quickSort = quickSort;
+//# sourceMappingURL=QuickSort.js.map

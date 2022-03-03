@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.countingSort = void 0;
 var misc_js_1 = require("../_Miscellaneous/misc.js");
 function countingSort(a) {
     var max = (0, misc_js_1.maxValue)(a);
@@ -16,4 +17,5 @@ function countingSort(a) {
             index++;
         }
 }
+exports.countingSort = countingSort;
 //# sourceMappingURL=CountingSort.js.map

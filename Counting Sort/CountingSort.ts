@@ -1,6 +1,6 @@
 import {maxValue, minValue} from "../_Miscellaneous/misc.js"
 
-function countingSort(a: number[]): void{
+export function countingSort(a: number[]): void{
     let max = maxValue(a)
     let min = minValue(a)
     let counter = []
