@@ -4,7 +4,7 @@ Prende il minimo valore del vettore e lo sposta in cima
 Parametro -> Array = L'array sul quale si vuole effettuare il sort
 Return -> Array = Restituisce l'array ordinato
 */
-export function selectionSort<T>(inputArr: T[]) { 
+export function selectionSort<τ>(inputArr: τ[]) { 
   let n = inputArr.length;
       
   for(let i = 0; i < n; i++) {

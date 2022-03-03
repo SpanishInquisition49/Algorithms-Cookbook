@@ -1,6 +1,6 @@
 import misc = require("../_Miscellaneous/misc");
 
-export function insertionSort<T>(a: T[]): void{
+export function insertionSort<τ>(a: τ[]): void{
     for(let j = 1; j<a.length; j++){
         let key = a[j];
         let i = j-1;

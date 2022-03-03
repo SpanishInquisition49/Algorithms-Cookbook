@@ -4,7 +4,7 @@ Parametro -> a = L'array in cui si vuole effettuare la ricerca
 Parametro -> v = valore di cui si vuole sapere l'indice nell'array
 Return ->  l'indice della prima occorrenza di v oppure null se v non è presente nell'array a
 */
-export function linearSearch<T>(a: T[], v: T): number | null {
+export function linearSearch<τ>(a: τ[], v: τ): number | null {
     for(let i = 0; i<a.length; i++)
         if(a[i] == v)
             return i;   

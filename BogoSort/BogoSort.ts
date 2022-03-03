@@ -1,6 +1,6 @@
 import { getRandomInt, swapInsideArray, isSorted } from "../_Miscellaneous/misc"
 
-export function bogoSort<T>(a: T[]): void{
+export function bogoSort<τ>(a: τ[]): void{
     let sorted = false
     while(!sorted){
         let i = getRandomInt(a.length)

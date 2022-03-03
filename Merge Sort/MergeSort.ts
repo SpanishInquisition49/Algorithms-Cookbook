@@ -1,4 +1,4 @@
-export function mergeSort<T>(array: T[]): T[] {
+export function mergeSort<τ>(array: τ[]): τ[] {
     const half = Math.floor(array.length / 2)
     if(array.length < 2)
       return array 
@@ -7,8 +7,8 @@ export function mergeSort<T>(array: T[]): T[] {
     return merge(mergeSort(left),mergeSort(array))
 }
 
-export function merge<T>(left: T[], right: T[]): T[] {
-    let arr: T[] = []
+export function merge<τ>(left: τ[], right: τ[]): τ[] {
+    let arr: τ[] = []
     while (left.length && right.length) {
         if (left[0] < right[0])
             arr.push(left.shift())  
