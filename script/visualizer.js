@@ -97,11 +97,11 @@ const SORTALGORITHMS = {
 const ELEMENTS = getSortingElements();
 const SPEED = getSpeed();
 const SLEEPINTERVAL_MS = 2000;
-const green = "#00A878";
-const conforntColor = "#246EB9";
-const swapColor = "#FF6663";
-const assignmentColor = "#FFD166";
-const arrayColor = "#B1A9B1";
+const green = "#8AFF80";
+const conforntColor = "#FF80BF";
+const swapColor = "#FF9580";
+const assignmentColor = "#FFFF80";
+const arrayColor = "#414D58";
 var selectedIndex = null;
 
 const actionsMap = {
