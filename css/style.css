@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root{
-    --bgColor: #3A506B;
-    --sortedColor: #00A878;
-    --conforntColor: #246EB9;
-    --swapColor: #FF6663;
-    --assignmentColor: #FFD166;
-    --arrayColor: #ADA8B6;
+    --bgColor: #0B0D0F;
+    --sortedColor: #8AFF80;
+    --confrontColor: #FF80BF;
+    --swapColor: #FF9580;
+    --assignmentColor: #FFFF80;
+    --arrayColor: #414D58;
 }
 
 body{
